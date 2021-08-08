@@ -89,4 +89,24 @@ describe("test helper", () => {
     const want = [4, 5];
     expect(want).toEqual(got);
   });
+
+  it("should return total price", async () => {
+    const dict_books = {
+      4: {
+        author_name: "Kristin Hannah",
+        id: 4,
+        price: 495,
+        book_name: "The Great Alone: A Novel Kristin Hannah",
+      },
+      5: {
+        author_name: "Annejet van der Zijl, Michele Hutchison",
+        id: 5,
+        price: 149,
+        book_name: "An American Princess: The Many Lives of Allene Tew",
+      },
+    };
+    let got = await getTotalPriceBook(dict_books, [4, 5]);
+    const want = 495 + 149;
+    expect(want).toEqual(got);
+  });
 });
