@@ -22,3 +22,5 @@
 `npm run test`
 
 ### API DOCUMENT
+
+https://documenter.getpostman.com/view/15823180/TzskE3Mr
