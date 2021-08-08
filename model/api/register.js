@@ -4,11 +4,35 @@ const { DateTime } = require("luxon");
 require("dotenv").config();
 
 const table = "t_user";
+const table_order = "t_user_order";
+
 const check_exit_email = async (username) => {
   try {
     const rows = await pool.query(
       `SELECT * FROM ${table} where username = '${username}'`
     );
+    return rows;
+  } catch (err) {
+    console.error("SQL error", err);
+    return err;
+  }
+};
+const get_user = async (id) => {
+  try {
+    const sql = `
+    SELECT 
+      tb1.id,
+      tb1.name,
+      tb1.surname,
+      tb1.date_of_birth,
+      tb2.user_id,
+      tb2.book_id
+    FROM ${table} tb1
+    LEFT JOIN  ${table_order}  tb2
+    ON tb1.id = tb2.user_id 
+    WHERE tb1.id = ?
+    `;
+    const rows = await pool.query(sql, [id]);
     return rows;
   } catch (err) {
     console.error("SQL error", err);
@@ -42,4 +66,5 @@ module.exports = {
   register_user,
   check_exit_email,
   update_status_user,
+  get_user,
 };
