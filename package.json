@@ -1,0 +1,49 @@
+{
+  "name": "base-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -i dry-run/ -i queue/ index ",
+    "migrate-up": "db-migrate up",
+    "migrate-down": "db-migrate down",
+    "test-migrate-up": "db-migrate up --table t_migrations",
+    "test-migrate-down": "db-migrate down --table t_migrations",
+    "test": "jest --detectOpenHandles"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.904.0",
+    "axios": "^0.21.1",
+    "better-queue": "^3.8.10",
+    "better-queue-sql": "^1.0.3",
+    "better-queue-sqlite": "https://github.com/e23thr/better-queue-sql/archive/v1.0.5-alpha.tar.gz",
+    "body-parser": "^1.19.0",
+    "circular-json": "^0.5.9",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "db-migrate": "^0.11.12",
+    "db-migrate-mysql": "^2.1.2",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "luxon": "^1.25.0",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "mysql2": "^2.2.5",
+    "nodemailer": "^6.5.0",
+    "svg-captcha": "^1.4.0",
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3",
+    "yup": "^0.32.8"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.4"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules
+logs/*.txt
+queue/*.sqlite3
+dry-run/*
+uploads/*
+video/*
+
+# for dev test script
+dev.js
+*.http
+
+/db

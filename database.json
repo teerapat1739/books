@@ -1,0 +1,33 @@
+{
+  "defaultEnv": "local",
+  "prd": {
+    "driver": "mysql",
+    "host": {
+      "ENV": "API_DB_HOST"
+    },
+    "user": {
+      "ENV": "API_DB_USER"
+    },
+    "password": {
+      "ENV": "API_DB_PASSWORD"
+    },
+    "database": {
+      "ENV": "API_DB_NAME"
+    },
+    "options": {
+      "encrypt": false,
+      "enableArithAbort": true
+    }
+  },
+  "local": {
+    "driver": "mysql",
+    "host": "localhost",
+    "user": "root",
+    "password": "root",
+    "database": "scb_exam",
+    "options": {
+      "encrypt": false,
+      "enableArithAbort": true
+    }
+  }
+}
