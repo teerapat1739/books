@@ -12,6 +12,7 @@ const {
 const {
   register_user,
   check_exit_email,
+  get_user,
 } = require("../../../model/api/register");
 const { create_order } = require("../../../model/api/order");
 
@@ -21,6 +22,7 @@ const {
 } = require("../../lib/validate/api/register");
 const { format_data } = require("../../lib/format/api/register");
 const { format_order } = require("../../lib/format/api/order");
+const { format_response } = require("../../lib/format/response/user");
 
 const validator = require("../../middlewares/validator");
 const { authen_token_api } = require("../../middlewares/authen");
@@ -29,9 +31,9 @@ module.exports = () => {
 
   router.post(
     "/",
-    validator({
-      body: validate_input,
-    }),
+    // validator({
+    //   body: validate_input,
+    // }),
     apiDebugger(),
     async (req, res, next) => {
       try {
@@ -63,7 +65,9 @@ module.exports = () => {
         : "";
 
       const data = jwt.verify(token, tokenSecretKey);
-      create_response(res, data);
+      let user = await get_user(data.id);
+      user = format_response(user);
+      create_response(res, user);
       next();
     } catch (e) {
       create_response(res, "Err", 400);
@@ -109,7 +113,7 @@ module.exports = () => {
   );
   router.post("/test", apiDebugger(), async (req, res, next) => {
     try {
-      create_response(res, req.body);
+      create_response(res, "req.body");
       next();
     } catch (e) {
       create_response(res, "Err", 400);
