@@ -25,7 +25,7 @@ describe("test format response", () => {
       id: 3,
       name: "qweqweqweqweqweqwe",
       surname: "qweqweqweqweqweqwe",
-      date_of_birth: "2021-08-06T17:00:00.000Z",
+      date_of_birth: "08/08/2021",
       user_id: 3,
       book_id: 1,
       books: [1, 4],
